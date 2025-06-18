@@ -11,7 +11,7 @@ import { RouterOutlet, RouterLink } from '@angular/router'; // Ensure these are 
     RouterLink    // For routerLink directive
   ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.scss'
 })
 export class App {
   isDarkMode = false;

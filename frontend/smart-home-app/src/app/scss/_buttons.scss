@@ -1,0 +1,103 @@
+
+// _buttons.scss
+
+// Note: Global variables like $spacing-sm, $primary-color-light etc.
+// are available because this partial is imported into styles.scss AFTER they are defined.
+
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: $spacing-sm $spacing-lg;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus, &.focus {
+    outline: 0;
+    // box-shadow: 0 0 0 0.2rem rgba(var(--primary-color), 0.25); // This needs var(--primary-color) to be a R,G,B value for rgba
+    // For simplicity, using a solid shadow or relying on browser default focus.
+    // Or, define SCSS variables that hold R,G,B values for primary color.
+    // Example: box-shadow: 0 0 0 0.2rem #{$primary-color-light}33; // Adding alpha
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+}
+
+// Primary Button
+.btn-primary {
+  color: #fff;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+
+  &:hover {
+    // Darken/lighten SCSS functions work on hex colors, not CSS variables directly.
+    // We must use the SCSS variables for light/dark themes here.
+    background-color: darken($primary-color-light, 10%);
+    border-color: darken($primary-color-light, 12%);
+    color: #fff;
+  }
+}
+body.dark-mode .btn-primary {
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
+   &:hover {
+    background-color: lighten($primary-color-dark, 10%);
+    border-color: lighten($primary-color-dark, 12%);
+    color: #fff;
+  }
+}
+
+
+// Secondary Button
+.btn-secondary {
+  color: var(--primary-color);
+  background-color: transparent;
+  border-color: var(--primary-color);
+
+  &:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+body.dark-mode .btn-secondary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+   &:hover {
+    color: var(--text-color-dark); // Ensure contrast if background becomes primary
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+}
+
+
+
+// Large Button
+.btn-lg {
+  padding: $spacing-md $spacing-xl;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+
+
+// Block Button
+.btn-block {
+  display: block;
+  width: 100%;
+}
