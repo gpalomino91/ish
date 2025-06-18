@@ -1,0 +1,84 @@
+
+// _forms.scss
+
+label {
+  display: inline-block;
+  margin-bottom: $spacing-sm;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-clip: padding-box;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    // box-shadow: 0 0 0 0.2rem rgba(var(--primary-color), 0.25); // Same issue with rgba and CSS var
+    // Example: box-shadow: 0 0 0 0.2rem #{$primary-color-light}33;
+  }
+
+  &::placeholder {
+    color: $secondary-color-light;
+    opacity: 1;
+  }
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="search"],
+body.dark-mode input[type="tel"],
+body.dark-mode input[type="url"],
+body.dark-mode input[type="number"],
+body.dark-mode textarea,
+body.dark-mode select {
+  &::placeholder {
+    color: $secondary-color-dark;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form-group {
+  margin-bottom: $spacing-md;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+  &:focus {
+    // box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+}
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: $spacing-xs;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+.is-invalid ~ .invalid-feedback,
+.is-invalid ~ .form-text + .invalid-feedback {
+  display: block;
+}

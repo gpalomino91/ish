@@ -1,0 +1,100 @@
+@import "../../../styles.scss"; // Import global variables, mixins, etc.
+
+.home-container {
+  // No specific container styles needed if using sections with .container inside
+}
+
+.hero-section {
+  background-color: var(--surface-color); // Use surface color for a slightly off-background shade
+  padding: $spacing-xxl 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+
+  .container {
+    h1 {
+      font-size: 2.8rem; // Larger for hero
+      font-weight: 700;
+      margin-bottom: $spacing-lg;
+      color: var(--primary-color); // Already set globally but can override
+    }
+
+    .lead {
+      font-size: 1.25rem;
+      color: var(--text-color);
+      margin-bottom: $spacing-xl;
+      max-width: 700px; // Constrain lead paragraph width
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      margin: $spacing-sm;
+    }
+    .btn-lg { // Define .btn-lg if not already global
+        padding: $spacing-md $spacing-xl;
+        font-size: 1.15rem;
+    }
+  }
+}
+
+.features-section {
+  padding: $spacing-xxl 0;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: $spacing-xl;
+    color: var(--text-color); // Or primary, depending on preference
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-xl;
+  }
+
+  .feature-item {
+    // Uses .card styles from global styles.scss
+    text-align: left; // Align card content to left
+
+    .feature-icon { // Simple emoji icon styling
+      font-size: 2.5rem;
+      margin-bottom: $spacing-md;
+      display: inline-block;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: $spacing-sm;
+      color: var(--primary-color);
+    }
+  }
+}
+
+// Responsive adjustments for Home Page
+@media (max-width: $breakpoint-md) {
+  .hero-section {
+    padding: $spacing-xl 0;
+    .container {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .lead {
+        font-size: 1.1rem;
+      }
+      // .btn-lg was made global, specific adjustments here if needed for home only on mobile
+      // For instance, if only home page .btn-lg needed different mobile padding:
+      // .btn-lg {
+      //   padding: $spacing-sm $spacing-lg;
+      //   font-size: 1rem;
+      // }
+    }
+  }
+
+  .features-section {
+    padding: $spacing-xl 0;
+    .features-grid {
+      grid-template-columns: 1fr; // Stack features on smaller screens
+      gap: $spacing-lg;
+    }
+  }
+}

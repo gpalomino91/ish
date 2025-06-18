@@ -1,0 +1,67 @@
+@import "../../../styles.scss";
+
+.contact-page-container {
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xl;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-form-card {
+  width: 100%;
+  max-width: 600px;
+  padding: $spacing-xl;
+
+  h1 {
+    text-align: center;
+    margin-bottom: $spacing-sm;
+  }
+  .lead-paragraph {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.submission-message {
+  margin-top: $spacing-lg;
+  padding: $spacing-md;
+  border-radius: $spacing-sm / 2;
+  text-align: center;
+
+  &.success-message {
+    // background-color: rgba(var(--accent-color), 0.1); // var(--accent-color) is hex, not RGB
+    background-color: #{$accent-color-light}1A; // Example using SCSS var with alpha
+    color: var(--accent-color);
+    border: 1px solid #{$accent-color-light}33; // Example
+  }
+  body.dark-mode &.success-message {
+    background-color: #{$accent-color-dark}1A;
+    border: 1px solid #{$accent-color-dark}33;
+  }
+
+  &.error-message {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545; // Standard Bootstrap danger red
+    border: 1px solid rgba(220, 53, 69, 0.2);
+  }
+}
+
+
+// Responsive adjustments for Contact Page
+@media (max-width: $breakpoint-sm) {
+  .contact-page-container {
+    padding-top: $spacing-lg;
+    padding-bottom: $spacing-lg;
+  }
+  .contact-form-card {
+    padding: $spacing-lg; // Reduce padding on very small screens
+  }
+}

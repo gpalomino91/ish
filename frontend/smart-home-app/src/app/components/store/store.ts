@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './store.html', // Corrected filename
-  styleUrls: ['./store.css']  // Corrected filename
+  styleUrls: ['./store.scss']  // Corrected filename
 })
 export class Store implements OnInit { // Corrected class name
   products$: Observable<Product[]>;

@@ -8,7 +8,7 @@ import { ContactService, ContactFormResponse } from '../../services/contact.serv
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contact.html',
-  styleUrls: ['./contact.css']
+  styleUrls: ['./contact.scss']
 })
 export class Contact implements OnInit { // Implements OnInit
   contactForm: FormGroup;

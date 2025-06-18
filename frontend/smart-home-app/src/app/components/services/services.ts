@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';   // Import RouterLink for <a rout
   standalone: true, // Ensure it's a standalone component
   imports: [CommonModule, RouterLink], // Add CommonModule and RouterLink
   templateUrl: './services.html',    // Actual filename
-  styleUrl: './services.css'      // Actual filename
+  styleUrl: './services.scss'      // Actual filename
 })
 export class Services { // Class name is Services
 

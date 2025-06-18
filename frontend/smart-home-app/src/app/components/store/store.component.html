@@ -1,0 +1,37 @@
+
+<div class="store-container container">
+  <h2>Products</h2>
+  <div class="product-list" *ngIf="(products$ | async) as products; else loadingProducts">
+    <div *ngFor="let product of products" class="product-item card">
+      <img [src]="product.imageUrl || 'assets/placeholder.png'" alt="{{product.name}}" class="product-image">
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">Price: \${{ product.price }}</p>
+        <button (click)="addToCart(product)" class="btn btn-primary">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  <ng-template #loadingProducts><p>Loading products...</p></ng-template>
+
+  <div class="shopping-cart-section card">
+    <h2>Shopping Cart</h2>
+    <div *ngIf="(cart$ | async) as cartItems">
+      <div *ngIf="cartItems.length === 0; else cartNotEmpty" class="cart-empty-message">
+        Your cart is empty.
+      </div>
+      <ng-template #cartNotEmpty>
+        <ul class="cart-items-list">
+          <li *ngFor="let item of cartItems" class="cart-item">
+            <span class="item-name">{{ item.name }}</span>
+            <span class="item-price">\${{ item.price }}</span>
+          </li>
+        </ul>
+        <div class="cart-total">
+          <strong>Total: \${{ calculateTotal(cartItems) }}</strong>
+        </div>
+        <button (click)="clearCart()" class="btn btn-secondary">Clear Cart</button>
+      </ng-template>
+    </div>
+  </div>
+</div>
