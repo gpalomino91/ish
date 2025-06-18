@@ -1,0 +1,32 @@
+<div class="contact-container">
+  <h1>Contact Us</h1>
+  <p>Have questions or want to schedule a service? Fill out the form below.</p>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name">
+      <div *ngIf="contactForm.get('name')!.invalid && (contactForm.get('name')!.dirty || contactForm.get('name')!.touched)" class="error">
+        Name is required.
+      </div>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+      <div *ngIf="contactForm.get('email')!.invalid && (contactForm.get('email')!.dirty || contactForm.get('email')!.touched)" class="error">
+        <span *ngIf="contactForm.get('email')!.errors?.['required']">Email is required.</span>
+        <span *ngIf="contactForm.get('email')!.errors?.['email']">Valid email is required.</span>
+      </div>
+    </div>
+    <div>
+      <label for="message">Message:</label>
+      <textarea id="message" formControlName="message" rows="5"></textarea>
+      <div *ngIf="contactForm.get('message')!.invalid && (contactForm.get('message')!.dirty || contactForm.get('message')!.touched)" class="error">
+        Message is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+  </form>
+  <div *ngIf="submissionStatus.message" [ngClass]="{'success-message': submissionStatus.success, 'error-message': !submissionStatus.success}" class="submission-status">
+    {{ submissionStatus.message }}
+  </div>
+</div>

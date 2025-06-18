@@ -1,0 +1,29 @@
+
+.services-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.service-item {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.service-item h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* Dark mode adjustments for service items */
+body.dark-mode .service-item {
+  background-color: #444;
+  border-color: #555;
+}
+
+body.dark-mode .service-item h2 {
+  color: #eee;
+}
