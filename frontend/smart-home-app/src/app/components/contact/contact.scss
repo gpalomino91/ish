@@ -10,58 +10,87 @@
 
 .contact-form-card {
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
   padding: $spacing-xl;
 
-  h1 {
-    text-align: center;
-    margin-bottom: $spacing-sm;
+  .page-header {
+    margin-bottom: $spacing-lg;
+    h1 {
+      margin-bottom: $spacing-sm;
+    }
+    .lead-paragraph {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
-  .lead-paragraph {
+  .text-center {
     text-align: center;
-    font-size: 1rem;
-    color: var(--secondary-color);
-    margin-bottom: $spacing-xl;
   }
 }
 
-.btn-block {
-    display: block;
-    width: 100%;
+.contact-details {
+  margin-bottom: $spacing-lg;
+  p {
+    margin-bottom: $spacing-xs;
+    font-size: 1rem;
+    line-height: 1.6;
+    strong {
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    a {
+      // Uses global link styling
+    }
+  }
 }
+
+.contact-divider {
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-xl;
+  border: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+// .btn-block and .btn-lg are global styles from _buttons.scss so no need to redefine here
+// .form-group, .form-control etc are styled from _forms.scss
 
 .submission-message {
   margin-top: $spacing-lg;
   padding: $spacing-md;
-  border-radius: $spacing-sm / 2;
+  border-radius: $spacing-sm / 2; // Revisit this, $spacing-sm is 1rem (16px), so 8px. Or use a global border-radius var.
   text-align: center;
 
   &.success-message {
-    // background-color: rgba(var(--accent-color), 0.1); // var(--accent-color) is hex, not RGB
-    background-color: #{$accent-color-light}1A; // Example using SCSS var with alpha
+    // background-color: rgba(var(--accent-color), 0.1); // Problematic with CSS var
+    background-color: #{$accent-color-light}1A; // Using SCSS var + alpha
     color: var(--accent-color);
-    border: 1px solid #{$accent-color-light}33; // Example
+    border: 1px solid #{$accent-color-light}33;
   }
   body.dark-mode &.success-message {
-    background-color: #{$accent-color-dark}1A;
+    background-color: #{$accent-color-dark}1A; // SCSS var + alpha for dark
     border: 1px solid #{$accent-color-dark}33;
   }
 
   &.error-message {
     background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545; // Standard Bootstrap danger red
+    color: #dc3545;
     border: 1px solid rgba(220, 53, 69, 0.2);
   }
 }
 
-
-// Responsive adjustments for Contact Page
+// Responsive adjustments
 @media (max-width: $breakpoint-sm) {
   .contact-page-container {
     padding-top: $spacing-lg;
     padding-bottom: $spacing-lg;
   }
   .contact-form-card {
-    padding: $spacing-lg; // Reduce padding on very small screens
+    padding: $spacing-lg;
+    .page-header .lead-paragraph {
+      font-size: 1rem;
+    }
   }
 }

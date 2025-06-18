@@ -1,0 +1,146 @@
+
+@import "../../../styles.scss";
+
+.section-padding {
+  padding: $spacing-xxl 0;
+}
+
+.surface-section {
+  background-color: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hero-section {
+  background-color: var(--surface-color);
+  padding: $spacing-xxl 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+
+  .container {
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: $spacing-lg;
+      color: var(--primary-color);
+    }
+    .lead {
+      font-size: 1.25rem;
+      color: var(--text-color);
+      margin-bottom: $spacing-xl;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-lg { // This is already defined globally in _buttons.scss
+      // padding: $spacing-md $spacing-xl;
+      // font-size: 1.15rem;
+      margin: $spacing-sm; // Add margin if multiple buttons
+    }
+  }
+}
+
+.intro-section {
+  h2 { // Added styling for h2 in intro
+    margin-bottom: $spacing-lg;
+  }
+  p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
+
+.features-section {
+  .lead-paragraph-features {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing-xl;
+    font-size: 1.1rem;
+    color: var(--secondary-color); // Use secondary color for less emphasis
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-xl;
+  }
+  .feature-item {
+    text-align: left;
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-md;
+      display: inline-block;
+      color: var(--primary-color);
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: $spacing-sm;
+      color: var(--text-color);
+    }
+  }
+}
+
+.testimonial-section {
+  h2 { // Added styling for h2 in testimonial
+    margin-bottom: $spacing-lg;
+  }
+  .testimonial {
+    max-width: 700px;
+    margin: 0 auto;
+    p {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: $spacing-md;
+      color: var(--secondary-color);
+    }
+    footer {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  }
+}
+
+.cta-section {
+  h2 { // Added styling for h2 in CTA
+    margin-bottom: $spacing-lg;
+  }
+  p {
+    font-size: 1.1rem;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+// Responsive adjustments for Home Page
+@media (max-width: $breakpoint-md) {
+  .section-padding {
+    padding: $spacing-xl 0;
+  }
+  .hero-section {
+    padding: $spacing-xl 0;
+    .container {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .lead {
+        font-size: 1.1rem;
+      }
+      // .btn-lg adjustments are global via _buttons.scss and its media queries if any
+      // Or can be specific here if needed.
+    }
+  }
+  .features-section .features-grid {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+  .intro-section p, .features-section .lead-paragraph-features {
+    font-size: 1rem; // Adjust paragraph font sizes for mobile
+  }
+}

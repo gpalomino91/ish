@@ -1,27 +1,111 @@
+<div class="store-container container">
+  <header class="page-header text-center">
+    <h1>Nuestros Productos Destacados</h1>
+    <p class="lead-paragraph">Descubre una selección de nuestros productos de hogar inteligente más populares, diseñados para mejorar tu comodidad, seguridad y eficiencia energética. Para consultas o compras, por favor contáctanos.</p>
+  </header>
 
-<h2>Products</h2>
-<div class="product-list" *ngIf="(products$ | async) as products; else loadingProducts">
-  <div *ngFor="let product of products" class="product-item">
-    <img [src]="product.imageUrl || 'assets/placeholder.png'" alt="{{product.name}}" width="100">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.description }}</p>
-    <p>Price: \${{ product.price }}</p>
-    <button (click)="addToCart(product)">Add to Cart</button>
-  </div>
-</div>
-<ng-template #loadingProducts><p>Loading products...</p></ng-template>
-
-<h2>Shopping Cart</h2>
-<div *ngIf="(cart$ | async) as cartItems">
-  <div *ngIf="cartItems.length === 0; else cartNotEmpty">
-    Your cart is empty.
-  </div>
-  <ng-template #cartNotEmpty>
-    <div *ngFor="let item of cartItems" class="cart-item">
-      <span>{{ item.name }}</span>
-      <span>\${{ item.price }}</span>
+  <div class="product-list">
+    <div class="product-item card">
+      <img src="assets/smart-thermostat-placeholder.png" alt="Termostato Inteligente" class="product-image">
+      <div class="product-info">
+        <h3>Termostato Inteligente Avanzado</h3>
+        <p class="product-description">Controla la climatización de tu hogar de forma eficiente y remota. Ahorra energía y disfruta de un confort personalizado.</p>
+        <h4>Características Clave:</h4>
+        <ul>
+          <li>Control Wi-Fi desde app móvil</li>
+          <li>Programación inteligente y aprendizaje de hábitos</li>
+          <li>Compatibilidad con asistentes de voz</li>
+          <li>Informes de consumo energético</li>
+        </ul>
+        <a routerLink="/contact" class="btn btn-primary">Consultar Precio</a>
+      </div>
     </div>
-    <p>Total: \${{ calculateTotal(cartItems) }}</p>
-    <button (click)="clearCart()">Clear Cart</button>
-  </ng-template>
+
+    <div class="product-item card">
+      <img src="assets/security-camera-placeholder.png" alt="Cámara de Seguridad IA" class="product-image">
+      <div class="product-info">
+        <h3>Cámara de Seguridad IA 2K</h3>
+        <p class="product-description">Vigilancia inteligente para tu hogar con detección de personas, visión nocturna a color y comunicación bidireccional.</p>
+        <h4>Características Clave:</h4>
+        <ul>
+          <li>Resolución 2K HDR</li>
+          <li>Detección inteligente de movimiento y sonido</li>
+          <li>Almacenamiento local y en la nube (opcional)</li>
+          <li>Sirena y foco integrados</li>
+        </ul>
+        <a routerLink="/contact" class="btn btn-primary">Consultar Precio</a>
+      </div>
+    </div>
+
+    <div class="product-item card">
+      <img src="assets/smart-bulb-placeholder.png" alt="Iluminación LED Inteligente" class="product-image">
+      <div class="product-info">
+        <h3>Kit de Iluminación LED Inteligente RGBW</h3>
+        <p class="product-description">Transforma el ambiente de cualquier habitación con millones de colores y blancos ajustables. Control por voz y app.</p>
+        <h4>Características Clave:</h4>
+        <ul>
+          <li>Más de 16 millones de colores y blancos (cálido a frío)</li>
+          <li>Control por app, voz y programaciones</li>
+          <li>Sincronización con música y escenas dinámicas</li>
+          <li>Bajo consumo energético</li>
+        </ul>
+        <a routerLink="/contact" class="btn btn-primary">Consultar Precio</a>
+      </div>
+    </div>
+
+    <div class="product-item card">
+      <img src="assets/smart-plug-placeholder.png" alt="Enchufe Inteligente Wi-Fi" class="product-image">
+      <div class="product-info">
+        <h3>Enchufe Inteligente Wi-Fi Compacto</h3>
+        <p class="product-description">Convierte cualquier electrodoméstico en inteligente. Controla y programa el encendido/apagado desde tu móvil.</p>
+        <h4>Características Clave:</h4>
+        <ul>
+          <li>Control remoto vía app</li>
+          <li>Programación de horarios y temporizadores</li>
+          <li>Monitoreo de consumo (en algunos modelos)</li>
+          <li>Diseño compacto que no bloquea otros enchufes</li>
+        </ul>
+        <a routerLink="/contact" class="btn btn-primary">Consultar Precio</a>
+      </div>
+    </div>
+     <div class="product-item card">
+      <img src="assets/voice-assistant-placeholder.png" alt="Altavoz con Asistente de Voz" class="product-image">
+      <div class="product-info">
+        <h3>Altavoz Inteligente con Asistente Integrado</h3>
+        <p class="product-description">Controla tu hogar inteligente, reproduce música, obtén respuestas y más, todo con tu voz.</p>
+        <h4>Características Clave:</h4>
+        <ul>
+          <li>Sonido de alta fidelidad</li>
+          <li>Integración con múltiples servicios de música</li>
+          <li>Control de dispositivos compatibles</li>
+          <li>Privacidad con botón de silencio de micrófono</li>
+        </ul>
+        <a routerLink="/contact" class="btn btn-primary">Consultar Precio</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="shopping-cart-section card" *ngIf="(cart$ | async) as cartItems">
+    <h2>Carrito de Compras (Referencial)</h2> <!-- Title changed to reflect it is not primary focus -->
+    <div *ngIf="cartItems.length === 0; else cartNotEmpty" class="cart-empty-message">
+      Tu carrito está vacío. (Funcionalidad de añadir desactivada en esta vista)
+    </div>
+    <ng-template #cartNotEmpty>
+      <ul class="cart-items-list">
+        <li *ngFor="let item of cartItems" class="cart-item">
+          <span class="item-name">{{ item.name }}</span>
+          <span class="item-price">${{ item.price }}</span>
+        </li>
+      </ul>
+      <div class="cart-total">
+        <strong>Total: ${{ calculateTotal(cartItems) }}</strong>
+      </div>
+      <button (click)="clearCart()" class="btn btn-secondary">Limpiar Carrito (Referencial)</button>
+    </ng-template>
+  </div>
+  <div *ngIf="!(cart$ | async)" class="shopping-cart-section card">
+      <h2>Carrito de Compras (Referencial)</h2>
+      <p>El carrito no está disponible actualmente.</p>
+  </div>
+
 </div>
