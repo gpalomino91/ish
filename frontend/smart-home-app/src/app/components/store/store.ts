@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { ProductService } from '../../services/product.service';
@@ -9,10 +8,10 @@ import { CommonModule } from '@angular/common';
   selector: 'app-store',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './store.html', // Corrected filename
-  styleUrls: ['./store.scss']  // Corrected filename
+  templateUrl: './store.html',
+  styleUrl: './store.scss'  // Changed from styleUrls
 })
-export class Store implements OnInit { // Corrected class name
+export class Store implements OnInit {
   products$: Observable<Product[]>;
   cart$: Observable<Product[]>;
 
